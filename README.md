@@ -32,18 +32,13 @@ Accurate segmentation and orientation estimation of fixed-wing UAVs are vital fo
 
 The proposed **PCA-SiamMask** leverages the geometric properties of fixed-wing UAVs. By applying PCA to the predicted masks, the model can estimate the principal axes of the target, leading to more stable and accurate rotated bounding boxes even during complex maneuvers.
 
+
 ---
 
-## 📸 Dataset Preview (Extended UAV2UAV)
-
-<p align="center">
-  <img src="./assets/sample_1.png" width="45%" />
-  <img src="./assets/sample_2.png" width="45%" />
-</p>
-
+## 📸 Dataset Preview
+<img width="1176" height="866" alt="image" src="https://github.com/user-attachments/assets/b9baf4e6-19d6-4e65-b2d8-f8bd4af2fb3c" />
 *Figure 2: Examples of our pixel-level segmentation masks and rotated box annotations for fixed-wing UAVs in air-to-air scenarios.*
 
-<img width="1176" height="866" alt="image" src="https://github.com/user-attachments/assets/b9baf4e6-19d6-4e65-b2d8-f8bd4af2fb3c" />
 ---
 
 ## 📊 Experimental Results
