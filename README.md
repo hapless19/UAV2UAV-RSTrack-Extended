@@ -43,6 +43,7 @@ The proposed **PCA-SiamMask** leverages the geometric properties of fixed-wing U
 
 *Figure 2: Examples of our pixel-level segmentation masks and rotated box annotations for fixed-wing UAVs in air-to-air scenarios.*
 
+<img width="1176" height="866" alt="image" src="https://github.com/user-attachments/assets/b9baf4e6-19d6-4e65-b2d8-f8bd4af2fb3c" />
 ---
 
 ## 📊 Experimental Results
