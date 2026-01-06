@@ -6,67 +6,77 @@
   <img src="https://img.shields.io/badge/Task-Segmentation-red" alt="Segmentation">
 </p>
 
----
-
-## 📌 Abstract
-本文针对复杂空中场景下**固定翼无人机（Fixed-Wing UAVs）**的分割与旋转框生成挑战，提出了 **PCA-SiamMask** 模型。由于固定翼无人机在长航时任务中具有重要地位，其姿态估计对航向判断至关重要。我们通过半自动标注方法增强了 **UAV2UAV** 数据集，提供了像素级掩码（Mask）和旋转框（Rotated Box）标注。
-
----
-
-## 📂 Table of Contents
-- [Introduction](#-introduction)
-- [Methodology](#-methodology)
-- [Dataset Download](#-dataset-download)
-- [Experimental Results](#-experimental-results)
-- [Citation](#-citation)
+This is the official repository for the paper **"Rotated Box-Aware Segmentation for Fixed-Wing UAVs: A PCA-Enhanced SiamMask Approach"**, accepted at the **8th Chinese Conference on Pattern Recognition and Computer Vision (PRCV 2025)**.
 
 ---
 
 ## 🚀 Introduction
-现有的无人机追踪数据集往往缺乏**空中视角（Air-to-Air）**以及关键的**旋转标注（Rotation Annotations）**。而在空对空场景下，无人机的加速度和方向信息（Orientation）是理解飞行状态的关键。
 
-我们的工作主要贡献包括：
-- **数据集增强**：为 UAV2UAV 数据集提供了高质量的像素级 Mask 和旋转框标注。
-- **角度优化策略**：结合椭圆拟合与主成分分析（PCA）优化旋转角估计。
-- **性能提升**：在区域相似度上提升了 2.7%，旋转框 AUC 提升了 1.8%。
+Accurate segmentation and orientation estimation of fixed-wing UAVs are vital for autonomous aerial operations. However, existing benchmarks often lack **air-to-air perspectives** and **rotation annotations**, which are crucial for understanding a UAV's flight state (e.g., orientation and acceleration).
+
+**Our Key Contributions:**
+- **Dataset Augmentation:** We enhanced the **UAV2UAV** and **RSTrack** datasets with high-quality pixel-level masks and rotated bounding boxes using a semi-automatic labeling pipeline.
+- **PCA-Enhanced Strategy:** We propose **PCA-SiamMask**, which integrates Ellipse Fitting and Principal Component Analysis (PCA) to refine rotation angle estimation.
+- **SOTA Performance:** Our method improves region similarity by **2.7%** and boosts rotated box AUC by **1.8%** compared to baseline methods.
 
 ---
 
 ## 🛠 Methodology
+
 <p align="center">
   <img src="./assets/framework.png" width="90%" alt="PCA-SiamMask Framework">
   <br>
-  <em>图1：PCA-SiamMask 整体架构图。我们利用 PCA 策略精炼了目标姿态估计。</em>
+  <em>Figure 1: Overview of the PCA-SiamMask framework for unified tracking and segmentation.</em>
 </p>
 
 
 
+The proposed **PCA-SiamMask** leverages the geometric properties of fixed-wing UAVs. By applying PCA to the predicted masks, the model can estimate the principal axes of the target, leading to more stable and accurate rotated bounding boxes even during complex maneuvers.
+
 ---
 
-## 📥 Dataset Download
-我们提供了针对固定翼无人机优化后的数据集扩展包：
-- **UAV2UAV-Extended (Masks & Rotated Boxes)**: [百度网盘](https://pan.baidu.com/s/1UZTbiseJ6IPR1oK5wJYMyg) (提取码: `75tu`)
-- **基础数据集**: [UAV2UAV](https://github.com/hapless19/UAV2UAV-dataset) | [RSTrack](https://github.com/TonikLeung/RSTrack)
+## 📸 Dataset Preview (Extended UAV2UAV)
+
+<p align="center">
+  <img src="./assets/sample_1.png" width="45%" />
+  <img src="./assets/sample_2.png" width="45%" />
+</p>
+
+*Figure 2: Examples of our pixel-level segmentation masks and rotated box annotations for fixed-wing UAVs in air-to-air scenarios.*
 
 ---
 
 ## 📊 Experimental Results
-### 定量对比 (on UAV2UAV Dataset)
+
+### Quantitative Evaluation on UAV2UAV (%)
 
 | Tracker | Region Similarity ($\mathcal{J}_M \uparrow$) | Overlap ($\mathcal{J}_O \uparrow$) | Decay ($\mathcal{J}_D \downarrow$) |
 | :--- | :---: | :---: | :---: |
 | SiamMask [2] | 45.1 | 55.9 | 72.4 |
-| **Ours (FW-Optimized)** | **47.8** | **59.3** | **66.9** |
+| **PCA-SiamMask (Ours)** | **47.8** | **59.3** | **66.9** |
 
-### 旋转框性能 (AUC Score)
-| Algorithm | OSTrack | SiamMask | **PCA-SiamMask (Ours)** |
-| :--- | :---: | :---: | :---: |
-| **AUC** | 0.458 | 0.382 | **0.424** |
+### Rotated Bounding Box Performance (AUC Score)
+
+| Algorithm | BACF | ECO | OSTrack | SiamMask | **Ours** |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **AUC** | 0.304 | 0.271 | 0.458 | 0.382 | **0.424** |
+
+---
+
+## 📥 Downloads
+
+### 1. Our Extended Annotations
+* **UAV2UAV-Extended (Masks & Rotated Boxes):** [Baidu Netdisk](https://pan.baidu.com/s/1UZTbiseJ6IPR1oK5wJYMyg) (Extraction Code: `75tu`)
+
+### 2. Foundational Datasets
+* **UAV2UAV Source:** [Link](https://github.com/hapless19/UAV2UAV-dataset)
+* **RSTrack Source:** [Link](https://github.com/TonikLeung/RSTrack)
 
 ---
 
 ## 📜 Citation
-如果您在研究中使用了本数据集或代码，请引用我们的 PRCV 2025 论文：
+
+If you find this work or the extended dataset useful for your research, please cite our PRCV 2025 paper:
 
 ```bibtex
 @inproceedings{li2025rotated,
