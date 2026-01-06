@@ -23,7 +23,7 @@ Accurate segmentation and orientation estimation of fixed-wing UAVs are vital fo
 ## 🛠 Methodology
 
 <p align="center">
-  <img src="./assets/PCA-SiamMask.png" width="90%" alt="PCA-SiamMask Framework">
+  <img src="./figures/PCA-Siammask.png" width="90%" alt="PCA-SiamMask Framework">
   <br>
   <em>Figure 1: Overview of the PCA-SiamMask framework.</em>
 </p>
