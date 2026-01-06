@@ -6,7 +6,6 @@
   <img src="https://img.shields.io/badge/Task-Segmentation-red" alt="Segmentation">
 </p>
 
-This is the official repository for the paper **"Rotated Box-Aware Segmentation for Fixed-Wing UAVs: A PCA-Enhanced SiamMask Approach"**, accepted at the **8th Chinese Conference on Pattern Recognition and Computer Vision (PRCV 2025)**.
 
 ---
 
